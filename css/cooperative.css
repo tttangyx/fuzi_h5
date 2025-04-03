@@ -1,0 +1,467 @@
+/* 基础容器和附宝样式 */
+.cooperative-container {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../picture/R.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* 附宝角色样式 */
+.character {
+    position: fixed;
+    left: -100px;
+    top: 77px;
+    transform: translateY(0);
+    width: 80px;
+    height: 80px;
+    background: url('../picture/character.png') no-repeat center/contain;
+    z-index: 1000;
+    animation: characterEnter 0.8s ease forwards, float 3s ease-in-out infinite;
+}
+
+/* 附宝对话框样式 */
+.character-dialog {
+    position: fixed;
+    left: 100px;
+    top: 77px;
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    max-width: 300px;
+    opacity: 0;
+    z-index: 999;
+    animation: dialogFadeIn 0.5s ease 0.8s forwards;
+}
+
+.character-dialog::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(0, 0, 0, 0.7);
+}
+
+/* 场景区域样式 */
+.scene-area {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* 负责人样式 */
+.manager {
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.manager:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.manager-image {
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.manager-name {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 对话框样式 */
+.dialog-box {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    z-index: 100;
+}
+
+.dialog-content {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.dialog-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.dialog-text {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.dialog-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dialog-option {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dialog-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 装车区域样式 */
+.loading-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 附子堆放区样式 */
+.fuzi-storage {
+    width: 200px;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.fuzi-item {
+    width: 80px;
+    height: 80px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.fuzi-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fuzi-item:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.fuzi-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/* 卡车区域样式 */
+.truck-area {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.truck-container {
+    width: 400px;
+    height: 250px;
+    position: relative;
+}
+
+.truck-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.truck-cargo {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 33%;
+    height: 33%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3px;
+    padding: 3px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.cargo-slot {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.cargo-slot.filled {
+    border-style: solid;
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.cargo-slot .fuzi-item {
+    width: 90%;
+    height: 90%;
+    cursor: default;
+}
+
+/* 游戏控制面板样式 */
+.game-panel {
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 30px;
+    border-radius: 15px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+}
+
+/* 游戏提示框样式 */
+.game-tip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    z-index: 1000;
+    animation: tipFadeIn 0.3s ease;
+}
+
+.game-tip.fade-out {
+    animation: tipFadeOut 0.5s ease forwards;
+}
+
+/* 分数显示样式 */
+.score-display {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.game-tip-text {
+    color: #4CAF50;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 10px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+/* 金币显示样式 */
+.coins-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.coin-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.coin-count {
+    color: gold;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 返回按钮样式 */
+.return-world-btn-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    z-index: 1000;
+}
+
+.return-world-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.return-world-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+}
+
+/* 发车按钮样式 */
+#dispatch-btn {
+    background: #f44336;
+    min-width: 120px;
+    font-size: 18px;
+    padding: 12px 25px;
+    text-transform: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#dispatch-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+#dispatch-btn:hover:not(:disabled) {
+    background: #d32f2f;
+    transform: translateY(-2px);
+}
+
+/* 动画关键帧 */
+@keyframes characterEnter {
+    from { left: -100px; }
+    to { left: 20px; }
+}
+
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(0) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes tipFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes tipFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .manager-image {
+        width: 150px;
+        height: 225px;
+    }
+
+    .dialog-box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .dialog-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .game-panel {
+        width: 90%;
+        padding: 10px 20px;
+    }
+
+    .truck-container {
+        width: 300px;
+        height: 200px;
+    }
+
+    .fuzi-storage {
+        width: 150px;
+        height: 250px;
+    }
+
+    .fuzi-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    #dispatch-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}

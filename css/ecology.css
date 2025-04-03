@@ -1,0 +1,182 @@
+/* 移动端适配 */
+@media (max-width: 768px) {
+    /* 基础容器样式 */
+    .ecology-container {
+        width: 100%;
+        min-height: 100vh;
+        background: url('../picture/123123.png') no-repeat center center fixed;
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* 页面标题样式 */
+    .page-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+        color: #2e7d32;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* 内容区域样式 */
+    .content-area {
+        position: relative;
+        height: calc(100vh - 180px);
+        overflow-y: auto;
+    }
+
+    /* 生态保护措施卡片样式 */
+    .measures-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding: 10px 0;
+        margin: 0 -20px;
+        padding: 0 20px;
+    }
+
+    .measure-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .measure-card h3 {
+        color: #2e7d32;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .measure-card p {
+        color: white;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .select-btn {
+        width: 100%;
+        background: rgba(46, 125, 50, 0.8);
+        padding: 10px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    /* 模拟结果显示 */
+    .simulation-result {
+        margin-top: 150px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 80px;  /* 为底部导航按钮留出空间 */
+    }
+
+    .simulation-result h3 {
+        color: #2e7d32;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .simulation-result.active {
+        transform: translateY(0);
+    }
+
+    .impact-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .metric {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .metric span {
+        display: block;
+        font-size: 12px;
+    }
+
+    .metric span:last-child {
+        color: #2e7d32;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* 导航按钮样式 */
+    .navigation-buttons {
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-btn {
+        flex: 1;
+        padding: 12px;
+        background: rgba(46, 125, 50, 0.8);
+        font-size: 14px;
+        justify-content: center;
+    }
+
+    /* 手指提示样式 */
+    .finger-hint {
+        position: fixed;
+        top: 32vh;  /* 从25vh调整到35vh，往下移动 */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;  /* 从40px增加到60px */
+        height: 60px;  /* 从40px增加到60px */
+        background: url('../picture/figener.jpg') no-repeat center center;
+        background-size: contain;
+        z-index: 10;
+        animation: fingerMove 1.5s ease-in-out infinite;
+    }
+
+    /* 手指左右移动动画 */
+    @keyframes fingerMove {
+        0% {
+            transform: translateX(-80%);
+        }
+        50% {
+            transform: translateX(80%);
+        }
+        100% {
+            transform: translateX(-80%);
+        }
+    }
+    
+}

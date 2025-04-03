@@ -1,0 +1,346 @@
+/* 基础容器样式 */
+.game-container {
+    width: 100%;
+    height: 100vh;
+    background: url('../picture/OIP (1).jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 动画关键帧定义 */
+@keyframes progressShine {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+@keyframes tipFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes tipFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+@keyframes wateringEffect {
+    0% { transform: translateX(-50%) scale(1); }
+    25% { transform: translateX(-50%) scale(1.1); }
+    75% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes fertilizingEffect {
+    0% { transform: translateX(-50%) rotate(0); }
+    25% { transform: translateX(-50%) rotate(-5deg); }
+    75% { transform: translateX(-50%) rotate(5deg); }
+    100% { transform: translateX(-50%) rotate(0); }
+}
+
+@keyframes harvestingEffect {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(0.8); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+/* 移动端适配 - 主要样式 */
+@media (max-width: 768px) {
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* 工具栏样式 */
+    .toolbar {
+        display: flex;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .tool {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .tool:hover, .tool:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .tool.active {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .tool-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 5px;
+    }
+
+    .tool-name {
+        color: white;
+        font-size: 14px;
+    }
+
+    /* 种植区域样式 */
+    .planting-area {
+        width: 100%;
+        max-width: 600px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .soil-plot {
+        width: 150px;
+        height: 150px;
+        position: relative;
+    }
+
+    .soil {
+        width: 100%;
+        height: 60px;
+        background: #654321;
+        border-radius: 50% 50% 0 0;
+        position: absolute;
+        bottom: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .plant {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    .plant-image {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        transition: all 0.5s ease;
+    }
+
+     /* 状态面板样式调整 */
+     .status-panel {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        width: 90%;
+        margin-bottom: 80px; /* 为返回按钮留出空间 */
+    }
+
+    .status-item {
+        margin: 10px 0;
+    }
+
+    .status-label {
+        color: white;
+        margin-right: 10px;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress {
+        width: 0%;
+        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        animation: progressShine 2s linear infinite;
+    }
+
+    #water-progress {
+        background: #2196F3;
+    }
+
+    #fertilizer-progress {
+        background: #FFC107;
+    }
+
+    /* 游戏提示样式 */
+    .game-tip {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 25px;
+        font-size: 16px;
+        z-index: 100;
+        animation: tipFadeIn 0.1s ease;
+        pointer-events: none;
+    }
+
+    .game-tip.fade-out {
+        animation: tipFadeOut 0.02s ease forwards; /* 从0.5s改为0.2s */
+    }
+
+    /* 动画类 */
+    .plant.watering {
+        animation: wateringEffect 1s ease;
+    }
+
+    .plant.fertilizing {
+        animation: fertilizingEffect 1s ease;
+    }
+
+    .plant.harvesting {
+        animation: harvestingEffect 1s ease;
+    }
+
+    /* 收获面板样式 */
+    .harvest-panel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .harvest-image {
+        width: 80px;
+        height: 80px;
+        margin: 15px 0;
+    }
+
+    .load-truck-btn {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    /* 金币显示样式 */
+    .coins-display {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 15px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .coin-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .coin-count {
+        color: gold;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* 返回按钮容器位置调整 */
+    .return-world-btn-container {
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 0 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        padding-top: 20px;
+        z-index: 1000;
+    }
+
+    .return-world-btn {
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    .return-world-btn .arrow {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+     /* 添加附宝形象 */
+     .character {
+        position: fixed;
+        top: 140px;
+        left: 20px;
+        width: 80px;
+        height: 80px;
+        background: url('../picture/character.png') no-repeat center/contain;
+        z-index: 100;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+}

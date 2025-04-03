@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附子合作社</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/cooperative.css">
+</head>
+<body>
+    <div class="cooperative-container">
+
+        <!-- 添加附宝和对话框 -->
+    <div class="character"></div>
+    <div class="character-dialog">
+        欢迎来到普照村的赋子合作社，您可以点击王主任了解详情
+    </div>
+
+        <!-- 场景区域 -->
+        <div class="scene-area">
+            <!-- 负责人形象 -->
+            <div class="manager" id="manager">
+                <img src="picture/manager.png" alt="合作社负责人" class="manager-image">
+                <div class="manager-name">王主任</div>
+            </div>
+
+            <!-- 打包区域（初始隐藏） -->
+            <div class="packing-area" style="display: none;">
+                <div class="conveyor-belt">
+                    <!-- 传送带上的附子会通过JS动态添加 -->
+                </div>
+                <div class="package-box">
+                    <!-- 包装盒 -->
+                </div>
+                <div class="truck">
+                    <!-- 卡车 -->
+                </div>
+            </div>
+
+            <!-- 装车区域（初始隐藏） -->
+            <div class="loading-area" style="display: none;">
+                <!-- 附子存放区 -->
+                <div class="fuzi-storage">
+                    <div class="fuzi-item" draggable="true">
+                        <img src="picture/fuzi-item.png" alt="附子">
+                    </div>
+                </div>
+                
+                <!-- 卡车区域 -->
+                <div class="truck-area">
+                    <div class="truck-container">
+                        <img src="picture/truck.png" alt="卡车" class="truck-image">
+                        <div class="truck-cargo">
+                            <!-- 货物槽位将通过JS动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 对话框 -->
+        <div class="dialog-box" style="display: none;">
+            <div class="dialog-content">
+                <img src="picture/manager-avatar.png" alt="头像" class="dialog-avatar">
+                <div class="dialog-text"></div>
+            </div>
+            <div class="dialog-options">
+                <!-- 对话选项会通过JS动态添加 -->
+            </div>
+        </div>
+
+        <!-- 游戏控制面板（初始隐藏） -->
+        <div class="game-panel" style="display: none;">
+            <div class="score-display">
+                <span>已装载：</span>
+                <span id="loaded-count">0</span>
+                <span>/6</span>
+            </div>
+            <div class="game-tip-text">
+                拖动左侧附子到卡车上的空槽位进行装载
+            </div>
+            <div class="game-controls">
+                <button class="control-btn" id="dispatch-btn" disabled>发车</button>
+            </div>
+        </div>
+
+        <!-- 金币展示 -->
+        <div class="coins-display">
+            <img src="picture/coin.png" alt="金币" class="coin-icon">
+            <span class="coin-count">0</span>
+        </div>
+
+        <!-- 返回大世界按钮 -->
+        <div class="return-world-btn-container">
+            <button class="return-world-btn" onclick="returnToMap()">
+                返回大世界继续探索
+                <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/cooperative.js"></script>
+</body>
+</html> 

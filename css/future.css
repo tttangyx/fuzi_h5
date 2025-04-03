@@ -1,0 +1,240 @@
+@media (max-width: 768px) {
+    /* 基础容器样式 */
+    .future-container {
+        width: 100%;
+        min-height: 100vh;
+        background: url('../picture/123123.png') no-repeat center center fixed;
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+     /* 内容区域样式 */
+     .content-area {
+        position: relative;
+        height: calc(100vh - 180px);
+        overflow-y: auto;
+        margin-top: 190px; /* 添加顶部边距，将内容区域往下移 */
+        padding-bottom: 80px; /* 添加底部内边距，确保内容不会被底部按钮遮挡 */
+    }
+
+    /* 留言板样式 */
+    .message-section {
+        margin: 20px 0;
+    }
+
+    .message-input {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .message-input input {
+        flex: 2;
+        height: 40px;
+        padding: 0 15px;
+        border: none;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 14px;
+    }
+
+    .message-input button {
+        flex: 1;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        background: rgba(46, 125, 50, 0.8);
+        color: white;
+        font-size: 14px;
+    }
+
+    .message-wall {
+        position: relative;
+        height: 60vh;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .message-bubble {
+        position: absolute;
+        padding: 12px 20px;
+        background: rgba(46, 125, 50, 0.6);
+        border-radius: 15px;
+        max-width: 180px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(50vh);
+        animation: bubbleFloat 1.5s ease-out forwards;
+    }
+
+    /* 导航按钮样式 */
+    .navigation-buttons {
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-btn {
+        flex: 1;
+        padding: 12px;
+        background: rgba(46, 125, 50, 0.8);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    /* 气泡浮动动画 */
+    /* 气泡浮动动画 */
+    @keyframes bubbleFloat {
+        0% {
+            visibility: visible;
+            opacity: 0;
+            transform: translateY(50vh);
+        }
+        30% {
+            opacity: 0.6;
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+        80% {
+            transform: translateY(10px);
+        }
+        100% {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* 输入框占位符样式 */
+    .message-input input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* 按钮点击效果 */
+    .message-input button:active {
+        transform: scale(0.95);
+    }
+
+    /* 金币显示样式 */
+.coins-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.coin-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.coin-count {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* 附宝角色样式 */
+.character {
+    position: fixed;
+    left: -100px;
+    top: 120px;  /* 调整到顶部 */
+    transform: translateY(0);  /* 移除Y轴偏移 */
+    width: 80px;
+    height: 80px;
+    background: url('../picture/character.png') no-repeat center/contain;
+    z-index: 1000;
+    animation: characterEnter 0.8s ease forwards, float 3s ease-in-out infinite;
+}
+
+/* 附宝对话框样式 */
+.character-dialog {
+    position: fixed;
+    left: 100px;
+    top: 120px;  /* 与附宝保持同一高度 */
+    transform: translateY(0);  /* 移除Y轴偏移 */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    max-width: 250px;
+    opacity: 0;
+    z-index: 999;
+    animation: dialogFadeIn 0.5s ease 0.8s forwards;
+}
+
+.character-dialog::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(0, 0, 0, 0.7);
+}
+
+/* 附宝入场动画 */
+@keyframes characterEnter {
+    from {
+        left: -100px;
+    }
+    to {
+        left: 20px;
+    }
+}
+
+/* 对话框淡入动画 */
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(0, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, -50%) scale(1);
+    }
+}
+
+/* 漂浮动画 */
+@keyframes float {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 10px)); }
+    100% { transform: translateY(-50%); }
+}
+
+}

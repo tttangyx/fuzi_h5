@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附子世界地图</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/world-map.css">
+</head>
+<body>
+    <div class="map-container">
+        <!-- 长图地图容器 -->
+        <div class="scroll-map">
+            <img src="picture/world-map.png" alt="附子世界地图" class="map-image">
+           
+            <!-- 路径描述文字 -->
+            <div class="path-description path-1-desc">
+                探索普照村的附子种植地，了解附子的生长环境和种植技术
+            </div>
+            <div class="path-description path-2-desc">
+                参观普照村的附子基地，见证附子的加工过程
+            </div>
+            <div class="path-description path-3-desc">
+                走访普照村的附子合作社，感受产业发展
+            </div>
+
+            <!-- 起点标记 -->
+            <div class="start-point">
+                <div class="start-point-dot"></div>
+                <div class="start-label">跟着附宝一起来探索普照村的附子生产流程吧！</div>
+            </div>
+            
+            <!-- 可点击的区域 -->
+            <div class="clickable-area planting-area" data-area="planting">
+                <img src="picture/planting-icon.png" alt="种植地图标" class="area-icon">
+                <div class="area-highlight"></div>
+                <div class="area-label">附子种植地</div>
+            </div>
+
+            <div class="clickable-area base-area" data-area="base">
+                <img src="picture/base-icon.png" alt="基地图标" class="area-icon">
+                <div class="area-highlight"></div>
+                <div class="area-label">附子基地</div>
+            </div>
+
+            <div class="clickable-area coop-area" data-area="cooperative">
+                <img src="picture/coop-icon.png" alt="合作社图标" class="area-icon">
+                <div class="area-highlight"></div>
+                <div class="area-label">附子合作社</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/world-map.js"></script>
+</body>
+</html> 

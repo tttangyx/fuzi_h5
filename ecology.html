@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生态保护与可持续发展</title>
+    <link rel="stylesheet" href="css/ecology.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="ecology-container">
+        <div class="page-header">
+            <h1>生态保护与可持续发展</h1>
+            <p class="subtitle">滑动选择保护措施，观察生态影响</p>
+        </div>
+
+        <div class="finger-hint"></div>
+    
+        <div class="content-area">
+            <div class="measures-grid">
+                <div class="measure-card" data-measure="rotation">
+                    <h3>轮作制度</h3>
+                    <p>实施3-5年轮作计划，择合适的轮作作物，改善土壤结构，提高地力</p>
+                    <button class="select-btn">选择此措施</button>
+                </div>
+
+                <div class="measure-card" data-measure="organic">
+                    <h3>有机肥料</h3>
+                    <p>使用本地农家肥，科学控制施肥量，提升土壤有机质</p>
+                    <button class="select-btn">选择此措施</button>
+                </div>
+
+                <div class="measure-card" data-measure="water">
+                    <h3>水资源管理</h3>
+                    <p>安装滴灌系统，科学规划灌溉时间，提高用水效率</p>
+                    <button class="select-btn">选择此措施</button>
+                </div>
+
+                <div class="measure-card" data-measure="biodiversity">
+                    <h3>生物多样性</h3>
+                    <p>种植防护林带形成天然屏障，设置生态构建完整生态系统，提升生态系统稳定性</p>
+                    <button class="select-btn">选择此措施</button>
+                </div>
+            </div>
+    
+            <!-- 调整位置的生态影响评估 -->
+            <div class="simulation-result active">
+                <h3>生态影响评估</h3>
+                <div class="impact-metrics">
+                    <div class="metric">
+                        <span>土壤质量</span>
+                        <span id="soilQuality">0%</span>
+                    </div>
+                    <div class="metric">
+                        <span>产量预测</span>
+                        <span id="yield">0%</span>
+                    </div>
+                    <div class="metric">
+                        <span>生态评分</span>
+                        <span id="ecoScore">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="navigation-buttons">
+            <button class="nav-btn prev-btn" onclick="window.location.href='value.html'">
+                <span class="arrow">←</span> 返回
+            </button>
+            <button class="nav-btn next-btn" onclick="window.location.href='future.html'">
+                继续 <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+        <!-- 导航按钮 -->
+        <div class="navigation-buttons">
+            <button class="nav-btn prev-btn" onclick="window.location.href='value.html'">
+                <span class="arrow">←</span> 返回价值页面
+            </button>
+            <button class="nav-btn next-btn" onclick="window.location.href='future.html'">
+                前往未来展望 <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/ecology.js"></script>
+</body>
+</html> 

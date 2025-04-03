@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来展望</title>
+    <link rel="stylesheet" href="css/future.css">
+</head>
+<body>
+    <div class="future-container">
+                    <!-- 添加附宝和对话框 -->
+    <div class="character"></div>
+    <div class="character-dialog">
+        未来展望，共同描绘附子产业的美好明天，您可以用一枚金币兑换留言，留下你的期望和祝福吧！
+    </div>
+            <!-- 添加金币显示 -->
+        <div class="coins-display">
+            <img src="picture/coin.png" alt="金币" class="coin-icon">
+            <span class="coin-count">0</span>
+        </div>
+        </div>
+
+        <div class="content-area">
+            <!-- 留言板部分 -->
+            <section class="message-section">
+                <div class="message-input">
+                    <input type="text" id="messageInput" placeholder="花费1金币写下您对附子的期望..." maxlength="50">
+                    <button id="submitMessage">发送</button>
+                </div>
+                <div class="message-wall" id="messageWall">
+                    <!-- 预设的消息 -->
+                    <div class="message-bubble" style="top: 20%; left: 30%">
+                        期待普照村的经济未来带动其他乡镇一起发展
+                    </div>
+                    <div class="message-bubble" style="top: 50%; left: 60%">
+                        普照村种植附子不仅提高村民收入、促进就业还增强了地方财政
+                    </div>
+                    <div class="message-bubble" style="top: 70%; left: 20%">
+                        让附子走向世界
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 导航按钮 -->
+        <div class="navigation-buttons">
+            <button class="nav-btn prev-btn" onclick="window.location.href='ecology.html'">
+                <span class="arrow">←</span> 返回
+            </button>
+            <button class="nav-btn next-btn" onclick="window.location.href='index.html'">
+                重新开始 <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/future.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附子种植小游戏</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/planting-game.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 工具栏 -->
+        <div class="character"></div>
+        <div class="toolbar">
+            <div class="tool" data-tool="water">
+                <img src="picture/water-can.png" alt="浇水" class="tool-icon">
+                <span class="tool-name">浇水</span>
+            </div>
+            <div class="tool" data-tool="fertilizer">
+                <img src="picture/fertilizer.png" alt="施肥" class="tool-icon">
+                <span class="tool-name">施肥</span>
+            </div>
+            <div class="tool" data-tool="harvest">
+                <img src="picture/sickle.png" alt="收获" class="tool-icon">
+                <span class="tool-name">收获</span>
+            </div>
+        </div>
+
+        <!-- 种植区域 -->
+        <div class="planting-area">
+            <div class="soil-plot">
+                <div class="plant" id="fuzi-plant">
+                    <!-- 植物生长阶段会通过JS动态改变图片 -->
+                    <img src="picture/seed.png" alt="附子种子" class="plant-image">
+                </div>
+                <div class="soil"></div>
+            </div>
+        </div>
+
+        <!-- 状态面板 -->
+        <div class="status-panel">
+            <div class="status-item">
+                <span class="status-label">生长进度：</span>
+                <div class="progress-bar">
+                    <div class="progress" id="growth-progress"></div>
+                </div>
+            </div>
+            <div class="status-item">
+                <span class="status-label">水分：</span>
+                <div class="progress-bar">
+                    <div class="progress" id="water-progress"></div>
+                </div>
+            </div>
+            <div class="status-item">
+                <span class="status-label">肥力：</span>
+                <div class="progress-bar">
+                    <div class="progress" id="fertilizer-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 收获面板（初始隐藏） -->
+        <div class="harvest-panel" style="display: none;">
+            <h2>收获成功！</h2>
+            <div class="harvest-content">
+                <img src="picture/fuzi.png" alt="附子" class="harvest-image">
+                <p>获得附子 x1</p>
+            </div>
+            <button class="load-truck-btn">装车获得金币</button>
+        </div>
+
+        <!-- 金币展示 -->
+        <div class="coins-display">
+            <img src="picture/coin.png" alt="金币" class="coin-icon">
+            <span class="coin-count">0</span>
+        </div>
+
+        <!-- 返回大世界按钮 -->
+        <div class="return-world-btn-container">
+            <button class="return-world-btn" onclick="returnToMap()">
+                返回大世界继续探索
+                <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/planting-game.js"></script>
+</body>
+</html> 

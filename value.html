@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附子的价值与应用</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/value.css">
+</head>
+<body>
+    <div class="value-container">
+        <!-- 页面标题 -->
+        <header class="page-header">
+            <h1>附子的价值与应用</h1>
+            <p class="subtitle">探索这一珍贵药材的多元价值</p>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="content-area">
+            <!-- 医药价值板块 -->
+            <section class="value-section medical-value">
+                <h2>医药价值</h2>
+                <div class="value-content">
+                    <div class="chart-container">
+                        <canvas id="medicalChart"></canvas>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <h3>临床应用</h3>
+                            <ul>
+                                <li>心血管系统疾病</li>
+                                <li>风湿性疾病</li>
+                                <li>神经系统疾病</li>
+                                <li>抗炎镇痛</li>
+                            </ul>
+                        </div>
+                        <div class="info-item">
+                            <h3>药理作用</h3>
+                            <ul>
+                                <li>强心作用</li>
+                                <li>镇痛作用</li>
+                                <li>抗炎作用</li>
+                                <li>温阳作用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 经济价值板块 -->
+            <section class="value-section economic-value">
+                <h2>经济价值</h2>
+                <div class="value-content">
+                    <div class="chart-container">
+                        <canvas id="economicChart"></canvas>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <h3>市场规模</h3>
+                            <ul>
+                                <li>年产量：约1000吨</li>
+                                <li>市场价值：超10亿元</li>
+                                <li>出口量：200吨/年</li>
+                                <li>增长率：15%/年</li>
+                            </ul>
+                        </div>
+                        <div class="info-item">
+                            <h3>就业贡献</h3>
+                            <ul>
+                                <li>直接就业：3000人</li>
+                                <li>间接就业：8000人</li>
+                                <li>农户收入提升：30%</li>
+                                <li>产业链就业：12000人</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 农业价值板块 -->
+            <section class="value-section agriculture-value">
+                <h2>农业价值</h2>
+                <div class="value-content">
+                    <div class="chart-container">
+                        <canvas id="agricultureChart"></canvas>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <h3>种植效益</h3>
+                            <ul>
+                                <li>土地利用率提升</li>
+                                <li>生态环境改善</li>
+                                <li>农业结构优化</li>
+                                <li>产业链延伸</li>
+                            </ul>
+                        </div>
+                        <div class="info-item">
+                            <h3>技术创新</h3>
+                            <ul>
+                                <li>种植技术提升</li>
+                                <li>加工工艺改进</li>
+                                <li>质量标准完善</li>
+                                <li>科研成果转化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 导航按钮 -->
+        <div class="navigation-buttons">
+            <button class="nav-btn prev-btn" onclick="window.location.href='blessing.html'">
+                <span class="arrow">←</span> 返回附宝祝福页
+            </button>
+            <button class="nav-btn next-btn" onclick="window.location.href='ecology.html'">
+                探索生态保护 <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 引入Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/value.js"></script>
+</body>
+</html> 

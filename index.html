@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小小附子，赋出新生</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fonts/custom-font.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'CustomFont', 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+            background: #f4f4f4;
+            overflow: hidden;  /* 防止body自身滚动 */
+        }
+
+        .scroll-container {
+    height: 100vh;
+    overflow-y: auto;  /* 启用垂直滚动 */
+    -webkit-overflow-scrolling: touch;  /* 在iOS上启用平滑滚动 */
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;  /* 隐藏滚动条 */
+}
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 封面页样式 */
+        #cover {
+            background: url('picture/OIP.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .main-title {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    position: absolute; /* 改为绝对定位 */
+    top: 50%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 完全居中 */
+    opacity: 0;
+    animation: titleFadeIn 3s ease forwards;
+}
+
+.title-column1 {
+    color: #d4c279;
+    font-size: 4rem;
+    text-shadow: 0 0 10px rgba(241, 196, 15, 0.8),
+                 0 0 20px rgba(241, 196, 15, 0.6),
+                 0 0 30px rgba(241, 196, 15, 0.4),
+                 0 0 40px rgba(241, 196, 15, 0.3),
+                 0 0 70px rgba(241, 196, 15, 0.2),
+                 2px 2px 2px rgba(0, 0, 0, 0.5);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+    transform: rotate(0deg);
+    animation: glowing1 2s ease-in-out infinite alternate;
+}
+
+.title-column2 {
+    color: #2ecc71;
+    font-size: 3.5rem;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.8),
+                 0 0 20px rgba(46, 204, 113, 0.6),
+                 0 0 30px rgba(46, 204, 113, 0.4),
+                 0 0 40px rgba(46, 204, 113, 0.3),
+                 0 0 70px rgba(46, 204, 113, 0.2),
+                 2px 2px 2px rgba(0, 0, 0, 0.5);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+    transform: rotate(0deg);
+    animation: glowing2 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowing1 {
+    from {
+        text-shadow: 0 0 10px rgba(241, 196, 15, 0.8),
+                     0 0 20px rgba(241, 196, 15, 0.6),
+                     0 0 30px rgba(241, 196, 15, 0.4),
+                     0 0 40px rgba(241, 196, 15, 0.3),
+                     0 0 70px rgba(241, 196, 15, 0.2),
+                     2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(241, 196, 15, 0.9),
+                     0 0 25px rgba(241, 196, 15, 0.7),
+                     0 0 35px rgba(241, 196, 15, 0.5),
+                     0 0 45px rgba(241, 196, 15, 0.4),
+                     0 0 75px rgba(241, 196, 15, 0.3),
+                     2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes glowing2 {
+    from {
+        text-shadow: 0 0 10px rgba(46, 204, 113, 0.8),
+                     0 0 20px rgba(46, 204, 113, 0.6),
+                     0 0 30px rgba(46, 204, 113, 0.4),
+                     0 0 40px rgba(46, 204, 113, 0.3),
+                     0 0 70px rgba(46, 204, 113, 0.2),
+                     2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(46, 204, 113, 0.9),
+                     0 0 25px rgba(46, 204, 113, 0.7),
+                     0 0 35px rgba(46, 204, 113, 0.5),
+                     0 0 45px rgba(46, 204, 113, 0.4),
+                     0 0 75px rgba(46, 204, 113, 0.3),
+                     2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* 修改动画起始位置 */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* 修改动画结束位置 */
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .main-title {
+        gap: 30px;
+    }
+    .title-column {
+        font-size: 2.8rem;
+    }
+}
+
+        /* 点击区域 */
+        .click-area {
+            position: absolute;
+            bottom: 25vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .click-area::before {
+            content: "帮助附子破土";
+            color: #333;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        /* 种子容器 */
+        .seed-container {
+            position: absolute;
+            bottom: 0.5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50vw;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .seed {
+            width: 100px;
+            height: 100px;
+            background: url('picture/seed.png') no-repeat center/contain;
+            position: absolute;
+            bottom: 20px;
+            opacity: 1;
+            cursor: pointer;
+            z-index: 10;
+            animation: breathing-seed 2s ease-in-out infinite;
+        }
+
+        @keyframes breathing-seed {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(0) scale(1.1); }
+        }
+
+        /* 开始探索按钮 */
+        .start-btn {
+            position: relative;
+            z-index: 2;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 5vh;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .start-btn.show {
+            opacity: 1;
+            pointer-events: auto;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* 通用动画 */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.7rem; }
+            .click-area { width: 120px; height: 120px; }
+            .click-area::before { font-size: 1rem; }
+            .seed-container { width: 80vw; height: 50vh; }
+        }
+
+        /* 角色浮动动画 */
+        .character {
+            width: 150px;
+            height: 100px;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 土地样式 */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 5vh;
+            background: linear-gradient(to bottom, #8B4513, #654321);
+            border-top: 5px solid #654321;
+        }
+
+.guide-image {
+    width: 15%;
+    max-width: 400px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    opacity: 1;
+    position: relative;
+    transform: translate(190px, 450px) rotate(-20deg); /* 从390px改为450px */
+    animation: sideToSide 3s ease-in-out infinite;
+}
+
+@keyframes sideToSide {
+    0% { transform: translate(120px, 770px) rotate(-20deg); }  /* 从380px改为440px */
+    50% { transform: translate(140px, 770px) rotate(-20deg); } /* 从380px改为440px */
+    100% { transform: translate(120px, 770px) rotate(-20deg); } /* 从380px改为440px */
+}
+
+        /* 加载页面 */
+        .loading-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('picture/OIP.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .loading-bar-container {
+            width: 300px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .loading-progress {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+/* 修改现有的动画关键帧 */
+@keyframes breathing-growing {
+    0%, 100% { transform: translateY(-20px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+@keyframes breathing-middle {
+    0%, 100% { transform: translateY(-16px) scale(1); }
+    50% { transform: translateY(-16px) scale(1.1); }
+}
+
+@keyframes breathing-final {
+    0%, 100% { transform: translateY(-100px) scale(1); }
+    50% { transform: translateY(-100px) scale(1.1); }
+}
+    </style>
+</head>
+<body>
+    <div class="scroll-container">  <!-- 新增的滚动容器 -->
+        <div id="cover" class="page active">
+            <div class="main-title">
+                <div class="title-column1">小小附子</div>
+                <div class="title-column2">赋出新生</div>
+            </div>
+            <img src="picture/figener.jpg" alt="引导图片" class="guide-image">
+            <div class="seed-container"><div class="seed"></div></div>
+            <div class="ground"></div>
+            <button class="start-btn" onclick="startExplore()">开始探索</button>
+        </div>
+
+        <div class="loading-page" style="display: none;">
+            <div class="loading-container">
+                <div class="loading-bar-container">
+                    <div class="loading-bar"></div>
+                </div>
+                <div class="loading-text">正在加载中请稍后...</div>
+                <div class="loading-progress">0%</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

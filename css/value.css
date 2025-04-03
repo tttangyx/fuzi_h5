@@ -1,0 +1,250 @@
+/* 移动端适配 */
+@media (max-width: 768px) {
+    /* 基础容器样式 */
+    .value-container {
+        width: 100%;
+        min-height: 100vh;
+        background: url('../picture/123123.png') no-repeat center center;
+        background-size: cover;
+        color: white;
+        padding: 40px 20px;
+        box-sizing: border-box;
+    }
+
+    /* 页面标题样式 */
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+        color: #4CAF50;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* 内容区域样式 */
+    .content-area {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* 价值板块样式 */
+    .value-section {
+        background: rgba(0, 0, 0, 0.7);  /* 更深的背景色 */
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);  /* 更深的阴影 */
+        animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .value-section h2 {
+        color: #2e7d32;  /* 更深的绿色 */
+        font-size: 24px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(46, 125, 50, 0.5);  /* 更深的边框色 */
+        position: relative;
+        padding-right: 30px;
+    }
+
+    .value-section h2::after {
+        content: '▼';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
+
+    .value-section.collapsed h2::after {
+        transform: translateY(-50%) rotate(-90deg);
+    }
+
+    .value-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: start;
+    }
+
+    /* 图表容器样式 */
+ .chart-container {
+    background: rgba(0, 0, 0, 0.6);  /* 更深的背景色 */
+    border-radius: 15px;
+    padding: 15px;
+    height: 250px;
+}
+
+    /* 信息列表样式 */
+    .info-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* 信息列表样式 */
+    .info-item {
+        background: rgba(0, 0, 0, 0.6);  /* 更深的背景色 */
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    .info-item h3 {
+        color: #2e7d32;  /* 更深的绿色 */
+        margin-bottom: 12px;
+        font-size: 18px;
+        font-weight: bold;  /* 加粗标题 */
+    }
+
+
+    .info-item ul {
+        list-style: none;
+        padding: 0;
+    }
+
+
+    .info-item li {
+        color: rgba(255, 255, 255, 1);  /* 更清晰的白色 */
+        margin-bottom: 10px;
+        padding-left: 15px;
+        position: relative;
+    }
+
+
+    .info-item li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #4CAF50;
+    }
+
+    /* 导航按钮样式 */
+    .navigation-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 30px auto 0;
+        padding: 0 20px;
+    }
+
+    .nav-btn {
+        width: 100%;
+        padding: 12px 20px;
+        background: rgba(76, 175, 80, 0.8);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+        background: rgba(76, 175, 80, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .nav-btn .arrow {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .value-section:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .value-section:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    /* 弹窗样式 */
+    .detail-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 320px;
+        z-index: 1000;
+        animation: popupFadeIn 0.3s ease;
+    }
+
+    .popup-content {
+        text-align: center;
+    }
+
+    .popup-content h3 {
+        color: #4CAF50;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .popup-content p {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .close-btn {
+        width: 100%;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+        background: #45a049;
+    }
+
+    @keyframes popupFadeIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    /* 板块折叠样式 */
+    .value-section .value-content {
+        transition: all 0.3s ease;
+    }
+
+    .value-section.collapsed .value-content {
+        display: none;
+    }
+}

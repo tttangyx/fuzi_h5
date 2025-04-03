@@ -1,0 +1,174 @@
+.video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+    background: #000;
+    aspect-ratio: 16/9;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* 使用 cover 让视频撑满容器 */
+}
+
+/* 播放/暂停按钮 */
+.play-pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-container:hover .play-pause-overlay {
+    opacity: 1;
+}
+
+.play-pause-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.1);
+}
+
+/* 文字内容区域 */
+.intro-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5); /* 调整透明度 */
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.intro-content h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.intro-content p {
+    color: #34495e;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.intro-content .highlight {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* 附宝角色 */
+.character {
+    width: 150px;
+    height: 200px;
+    margin: 20px auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.character:hover {
+    transform: scale(1.1) translateY(-5px);
+}
+/* 在文件开头添加 body 样式 */
+body {
+    background: url('../picture/true.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* 修改容器样式，添加半透明背景 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3); /* 添加半透明白色背景 */
+    min-height: 100vh;
+}
+
+/* 添加引导容器样式 */
+.guide-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.guide-image {
+    width: 20%;
+    max-width: 200px;
+    position: absolute;
+    right: 10%;  /* 从 35% 改为 30%，更靠右 */
+    bottom: 30%;  /* 从 60% 改为 40%，更靠下 */
+    transform: rotate(-20deg);
+    animation: guideAnimation 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes guideAnimation {
+    0% {
+        transform: translate(0, 0) rotate(-20deg);
+    }
+    50% {
+        transform: translate(20px, 0) rotate(-20deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(-20deg);
+    }
+}
+
+/* 修改 character 样式，确保在引导图片上层 */
+.character {
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
